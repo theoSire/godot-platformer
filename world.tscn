@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2oxp8a84yxad"]
+[gd_scene load_steps=5 format=3 uid="uid://b2oxp8a84yxad"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_df1r1"]
 [ext_resource type="PackedScene" uid="uid://diqrsek1w4mnn" path="res://player.tscn" id="2_n0f40"]
+[ext_resource type="PackedScene" uid="uid://b63peg2wpxstc" path="res://spikes.tscn" id="3_cf7rv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7vtyi"]
 size = Vector2(20, 95.5625)
@@ -9,19 +10,29 @@ size = Vector2(20, 95.5625)
 [node name="World" type="Node2D"]
 script = ExtResource("1_df1r1")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(38, 86)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(0, 0, 24, 0, 24, 112, 65, 112, 84, 97, 117, 97, 152, 128, 152, 160, 176, 160, 176, 128, 200, 128, 200, 96, 224, 96, 224, 112, 248, 112, 272, 128, 304, 128, 304, 0, 328, 0, 328, 184, 0, 184)
+polygon = PackedVector2Array(0, 0, 24, 0, 24, 112, 65, 112, 84, 97, 117, 97, 152, 128, 152, 160, 176, 160, 176, 128, 200, 128, 200, 96, 224, 96, 224, 112, 271, 118, 275, 146, 299, 146, 304, 0, 328, 0, 328, 184, 0, 184)
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
 color = Color(0, 0, 0, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_n0f40")]
-position = Vector2(40, 96)
+position = Vector2(38, 86)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(272, 8)
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(0, 41.2188)
@@ -37,6 +48,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
 position = Vector2(67, -16)
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
 position = Vector2(0, 41.2188)
@@ -49,3 +61,15 @@ offset_right = 10.0
 offset_bottom = 89.0
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="Spikes" parent="." instance=ExtResource("3_cf7rv")]
+position = Vector2(152, 160)
+
+[node name="Spikes2" parent="." instance=ExtResource("3_cf7rv")]
+position = Vector2(160, 160)
+
+[node name="Spikes3" parent="." instance=ExtResource("3_cf7rv")]
+position = Vector2(275, 146)
+
+[node name="Spikes4" parent="." instance=ExtResource("3_cf7rv")]
+position = Vector2(283, 146)
