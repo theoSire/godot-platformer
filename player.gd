@@ -51,11 +51,13 @@ func handle_jump():
 	if is_on_floor() or coyote_jump_timer.time_left > 0.0:
 		if Input.is_action_just_pressed("ui_up"):
 			velocity.y = movement_data.jump_velocity		 
-	if not is_on_floor():
+	elif not is_on_floor():
+		#double jump (air jump)
 		if Input.is_action_just_released("ui_up") && velocity.y < movement_data.jump_velocity / 2:
 			velocity.y = movement_data.jump_velocity / 2
-			
-		if Input.is_action_just_pressed("ui_up") and air_jump:
+		
+		#avoid air jump near walls
+		if Input.is_action_just_pressed("ui_up") and air_jump and not is_on_wall():
 			velocity.y = movement_data.jump_velocity * 0.8
 			air_jump = false
  

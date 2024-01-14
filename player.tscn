@@ -86,6 +86,7 @@ position = Vector2(1, -10)
 floor_stop_on_slope = false
 floor_constant_speed = true
 floor_snap_length = 3.0
+safe_margin = 0.081
 script = ExtResource("1_27f6g")
 movement_data = ExtResource("2_ptvxn")
 
@@ -101,7 +102,7 @@ position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_va370")
 
 [node name="CoyoteJumpTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.1
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
