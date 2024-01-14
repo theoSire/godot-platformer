@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://diqrsek1w4mnn" path="res://player.tscn" id="2_n0f40"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7vtyi"]
-size = Vector2(20, 87.375)
+size = Vector2(20, 95.5625)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_df1r1")
@@ -24,7 +24,7 @@ position = Vector2(40, 96)
 position = Vector2(272, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(0, 37.125)
+position = Vector2(0, 41.2188)
 shape = SubResource("RectangleShape2D_7vtyi")
 
 [node name="ColorRect" type="ColorRect" parent="StaticBody2D2"]
@@ -36,15 +36,16 @@ color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2(272, 8)
+position = Vector2(67, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2(-217, 35.6875)
+position = Vector2(0, 41.2188)
 shape = SubResource("RectangleShape2D_7vtyi")
 
 [node name="ColorRect" type="ColorRect" parent="StaticBody2D3"]
-offset_left = -227.0
+offset_left = -10.0
 offset_top = -8.0
-offset_right = -207.0
-offset_bottom = 79.0
+offset_right = 10.0
+offset_bottom = 89.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
