@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2oxp8a84yxad"]
+[gd_scene load_steps=7 format=3 uid="uid://b2oxp8a84yxad"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_df1r1"]
 [ext_resource type="PackedScene" uid="uid://diqrsek1w4mnn" path="res://player.tscn" id="2_n0f40"]
 [ext_resource type="PackedScene" uid="uid://b63peg2wpxstc" path="res://spikes.tscn" id="3_cf7rv"]
+[ext_resource type="PackedScene" uid="uid://b1awmswljxgsc" path="res://heart.tscn" id="4_qrpnr"]
+[ext_resource type="PackedScene" uid="uid://de6pm1enlmcrn" path="res://level_completed.tscn" id="5_pa3cr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7vtyi"]
 size = Vector2(20, 95.5625)
@@ -73,3 +75,53 @@ position = Vector2(275, 146)
 
 [node name="Spikes4" parent="." instance=ExtResource("3_cf7rv")]
 position = Vector2(283, 146)
+
+[node name="Heart" parent="." instance=ExtResource("4_qrpnr")]
+position = Vector2(111, 87)
+
+[node name="Heart2" parent="." instance=ExtResource("4_qrpnr")]
+position = Vector2(99, 87)
+
+[node name="Heart3" parent="." instance=ExtResource("4_qrpnr")]
+position = Vector2(105, 79)
+
+[node name="Heart4" parent="." instance=ExtResource("4_qrpnr")]
+position = Vector2(164, 136)
+
+[node name="Heart6" parent="." instance=ExtResource("4_qrpnr")]
+position = Vector2(42, 36)
+
+[node name="Heart7" parent="." instance=ExtResource("4_qrpnr")]
+position = Vector2(13, -6)
+
+[node name="Heart8" parent="." instance=ExtResource("4_qrpnr")]
+position = Vector2(66, -33)
+
+[node name="Heart9" parent="." instance=ExtResource("4_qrpnr")]
+position = Vector2(238, 51)
+
+[node name="Heart10" parent="." instance=ExtResource("4_qrpnr")]
+position = Vector2(287, 124)
+
+[node name="Heart11" parent="." instance=ExtResource("4_qrpnr")]
+position = Vector2(291, 87)
+
+[node name="Heart12" parent="." instance=ExtResource("4_qrpnr")]
+position = Vector2(294, 9)
+
+[node name="Heart14" parent="." instance=ExtResource("4_qrpnr")]
+position = Vector2(273, -8)
+
+[node name="Heart15" parent="." instance=ExtResource("4_qrpnr")]
+position = Vector2(314, -11)
+
+[node name="Heart13" parent="." instance=ExtResource("4_qrpnr")]
+position = Vector2(294, 50)
+
+[node name="Heart5" parent="." instance=ExtResource("4_qrpnr")]
+position = Vector2(161, 70)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelCompleted" parent="CanvasLayer" instance=ExtResource("5_pa3cr")]
+visible = false
