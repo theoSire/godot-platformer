@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_fdf45")
-speed = 100.0
+speed = 110.0
 acceleration = 800.0
 friction = 1000.0
 jump_velocity = -300.0

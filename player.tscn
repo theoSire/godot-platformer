@@ -90,7 +90,7 @@ collision_layer = 2
 floor_stop_on_slope = false
 floor_constant_speed = true
 floor_snap_length = 3.0
-safe_margin = 0.081
+safe_margin = 0.81
 script = ExtResource("1_27f6g")
 movement_data = ExtResource("2_ptvxn")
 
