@@ -9,6 +9,12 @@
 [node name="LevelOne" instance=ExtResource("1_k0em2")]
 next_level = ExtResource("5_ght0k")
 
+[node name="Camera2D" parent="." index="0"]
+position = Vector2(0, -4)
+
+[node name="Player" parent="." index="1"]
+position = Vector2(0, -4)
+
 [node name="Spikes" parent="." index="4" instance=ExtResource("2_qfd50")]
 position = Vector2(150, 166)
 
