@@ -20,7 +20,6 @@ func _physics_process(delta):
 	handle_air_acceleration(input_axis, delta)
 	apply_friction(input_axis, delta)
 	apply_air_resistance(input_axis, delta)
-	update_animations(input_axis)
 	var was_on_floor = is_on_floor() #before moving
 	move_and_slide() 
 	var just_left_ledge = was_on_floor and not is_on_floor() and velocity.y >= 0 #after moving
@@ -30,6 +29,7 @@ func _physics_process(delta):
 		movement_data = load("res://FasterMovementData.tres")
 	if Input.is_action_just_pressed("slow_movement"):
 		movement_data = load("res://SlowMovementData.tres")
+	update_animations(input_axis)
 
 func apply_gravity(delta):
 	if not is_on_floor():
