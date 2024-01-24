@@ -1,4 +1,3 @@
-# Whenever a tag push matching pattern "v*" then run the job
 on:
   push:
     tags:
@@ -17,6 +16,11 @@ jobs:
         id: get_tag
         run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
 
+      - name: Check Existing Release
+        id: check_release
+        run: gh release view "${{ env.TAG_NAME }}" --repo="${{ github.repository }}" || echo "RELEASE_NOT_EXIST"
+        shell: bash
+
       - name: Export Game
         id: export
         uses: firebelley/godot-export@v5.2.0
@@ -27,7 +31,12 @@ jobs:
           archive_output: true
 
       - name: Create Release
-        run: gh release create "${{ env.TAG_NAME }}" --repo="${{ github.repository }}" --title="${{ github.repository_name }} ${{ env.TAG_NAME#v }}" --generate-notes
+        run: |
+          if [ "${{ steps.check_release.outputs.RELEASE_NOT_EXIST }}" == "RELEASE_NOT_EXIST" ]; then
+            gh release create "${{ env.TAG_NAME }}" --repo="${{ github.repository }}" --title="${{ github.repository_name }} ${{ env.TAG_NAME#v }}" --generate-notes
+          else
+            echo "Release with tag '${{ env.TAG_NAME }}' already exists."
+          fi
         shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
