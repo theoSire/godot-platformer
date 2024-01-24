@@ -1,0 +1,25 @@
+name: Godot Export
+
+on: 
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: exportGame
+        uses: firebelley/godot-export@v5.2.1
+        with: 
+          godot_executable_download_url: http://downloads.tuxfamily.org/godotengine/4.2.1/Godot_v4.2.1-stable_linux.x86_64.zip
+          godot_export_templates_download_url: http://downloads.tuxfamily.org/godotengine/4.2.1/Godot_v4.2.1-stable_export_templates.tpz
+          relative_project_path: ./
+          create_release: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+          
