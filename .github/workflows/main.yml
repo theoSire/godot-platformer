@@ -1,5 +1,5 @@
 # Whenever a tag push matching pattern "v*" then run the job
-on: 
+on:
   push:
     tags:
       - "v*"
@@ -21,7 +21,7 @@ jobs:
   
     - name: export game
       id: export
-      # Use latest version (see releases for all versions)
+      # Use the latest version (see releases for all versions)
       uses: firebelley/godot-export@v5.2.0
       with:
         # Defining all the required inputs
@@ -30,7 +30,6 @@ jobs:
         relative_project_path: ./
         archive_output: true
 
-        
       # This release action has worked well for me. However, you can most likely use any release action of your choosing.
       # https://github.com/ncipollo/release-action
     - name: create release
