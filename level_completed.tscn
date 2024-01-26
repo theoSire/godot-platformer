@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://de6pm1enlmcrn"]
+[gd_scene load_steps=3 format=3 uid="uid://de6pm1enlmcrn"]
 
 [ext_resource type="Theme" uid="uid://kppl571vv61n" path="res://default_theme.tres" id="1_m8m5i"]
+[ext_resource type="Script" path="res://level_completed.gd" id="1_r7b3i"]
 
 [node name="LevelCompleted" type="ColorRect"]
 anchors_preset = 15
@@ -9,6 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.313726)
+script = ExtResource("1_r7b3i")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -18,8 +20,34 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_m8m5i")
 theme_override_font_sizes/font_size = 10
 text = "Level Completed!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RetryButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+process_mode = 3
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+theme = ExtResource("1_m8m5i")
+text = "Retry"
+
+[node name="NextLevelButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+process_mode = 3
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+theme = ExtResource("1_m8m5i")
+text = "Next Level"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/NextLevelButton" to="." method="_on_next_level_button_pressed"]
